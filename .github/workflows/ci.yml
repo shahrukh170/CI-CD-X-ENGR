@@ -30,9 +30,9 @@ jobs:
           ECR_REPOSITORY: reponame
           IMAGE_TAG: dev
         run: |
-          docker build -t service-a:$IMAGE_TAG -f apps/Dockerfile .
-          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+          docker build -t service-a:dev -f apps/Dockerfile .
+          echo "IMAGE_TAG=dev" >> $GITHUB_ENV
         
       - name: Push Image
         run: |
-          docker push service-a:$IMAGE_TAG
+          docker push service-a:dev
