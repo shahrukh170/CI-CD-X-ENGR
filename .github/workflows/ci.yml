@@ -30,11 +30,11 @@ jobs:
         id: ecr
         uses: aws-actions/amazon-ecr-login@v2 || true
 env:
-  ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
-  run: |
-      IMAGE_TAG=${GITHUB_SHA::7}
-      docker build -t $ECR_REGISTRY/service-a:$IMAGE_TAG -f app/service_a/Dockerfile .
-      echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
-      - name: Push image
-      docker push $ECR_REGISTRY/service-a:${IMAGE_TAG}
-
+      ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
+      run: |
+          IMAGE_TAG=${GITHUB_SHA::7}
+          docker build -t $ECR_REGISTRY/service-a:$IMAGE_TAG -f app/service_a/Dockerfile .
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+          - name: Push image
+          docker push $ECR_REGISTRY/service-a:${IMAGE_TAG}
+    
