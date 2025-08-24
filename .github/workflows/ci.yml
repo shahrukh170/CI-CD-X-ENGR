@@ -35,4 +35,4 @@ jobs:
         
       - name: Push Image
         run: |
-          docker push service-a:dev
+          docker run -p 8000:8000 -t service-a:dev
