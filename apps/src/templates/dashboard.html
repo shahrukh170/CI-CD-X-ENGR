@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CI/CD Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        h1 { color: #333; }
+        button {
+            padding: 10px 20px; margin: 10px; border: none;
+            border-radius: 8px; font-size: 16px; cursor: pointer;
+            background: #007bff; color: white;
+        }
+        button:hover { background: #0056b3; }
+        #output { margin-top: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <h1>🚀 CI/CD Pipeline Dashboard</h1>
+    <button onclick="runStep('/tests')">Run Tests</button>
+    <button onclick="runStep('/build')">Build Infrastructure</button>
+    <button onclick="runStep('/deploy')">Deploy Application</button>
+    <button onclick="runStep('/pipeline')">Run Full Pipeline</button>
+
+    <div id="output">👉 Results will appear here...</div>
+
+    <script>
+        async function runStep(endpoint) {
+            const res = await fetch(endpoint);
+            const data = await res.json();
+            document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+</html>
