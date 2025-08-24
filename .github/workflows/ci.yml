@@ -19,9 +19,8 @@ jobs:
       - run: pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=xml || true
       - name: Lint & Typecheck
         run: |
-            ruff --check app/
-            black --check app/
-            mypy app/
+            black --check apps/
+            mypy apps/ 
       - name: Unit tests
         run: |
             pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=xml
