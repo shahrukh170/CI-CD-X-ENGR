@@ -22,7 +22,7 @@ FROM base AS runtime
 COPY --from=deps /usr/local /usr/local
 USER root
 EXPOSE 8000
-COPY src/ app/
-COPY src/templates/* templates/
+COPY ./src/ app/
+COPY ./src/templates/* templates/
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD python -m src.healthcheck || exit 1
 CMD ["python", "app/main.py"]
