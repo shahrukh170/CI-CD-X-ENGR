@@ -17,7 +17,6 @@ jobs:
         with: { python-version: '3.12' }
       - run: pip-audit -r app/service_a/requirements.txt || true
       - run: pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=xml || true
-      - name: Lint & Typecheck
       - name: Unit tests
         run: |
             pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=xml || true
