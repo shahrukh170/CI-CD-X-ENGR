@@ -4,8 +4,10 @@ on:
     branches: [ main, develop ]
     paths: ['apps/*','.github/*']
   push:
-    branches: [ main, 'release/*' ]
-
+    branches: [ main, 'release/*']
+permissions:
+  id-token: write # for OIDC
+  contents: read
 jobs:
   build-test:
     runs-on: ubuntu-latest
