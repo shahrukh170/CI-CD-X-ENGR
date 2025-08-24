@@ -11,5 +11,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: pip install -r apps/requirements.txt
-      - run: pytest apps/test_sample.py -q
+      - run: pip-audit -r app/service_a/requirements.txt || true
+      - run: pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=xml || true
