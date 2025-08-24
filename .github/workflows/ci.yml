@@ -19,9 +19,9 @@ jobs:
       - run: pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=xml || true
       - name: Lint & Typecheck
         run: |
-          ruff check app/
-          black --check app/
-          mypy app/
+            ruff --check app/
+            black --check app/
+            mypy app/
       - name: Unit tests
         run: |
             pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=xml
@@ -38,8 +38,5 @@ env:
         docker build -t $ECR_REGISTRY/service-a:$IMAGE_TAG -f app/service_a/Dockerfile .
         echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
         - name: Push image
-env:
-    ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
-    run: |
         docker push $ECR_REGISTRY/service-a:${IMAGE_TAG}
 
