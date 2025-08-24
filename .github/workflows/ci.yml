@@ -1,6 +1,7 @@
 name: CI
 on:
   pull_request:
+  paths: [ 'app/*', 'infra/', '.github/*' ]
   push:
     branches: [ main, 'release/*' ]
 
