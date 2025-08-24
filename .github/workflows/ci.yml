@@ -23,9 +23,7 @@ jobs:
       - name: Dependency audit
         run: pip-audit -r app/service_a/requirements.txt || true
         
-      - name: Log in to Amazon ECR
-        id: ecr
-             
+               
       - name: Build, tag, and push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
