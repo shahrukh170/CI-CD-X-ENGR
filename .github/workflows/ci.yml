@@ -25,10 +25,7 @@ jobs:
         
       - name: Log in to Amazon ECR
         id: ecr
-        uses: aws-actions/amazon-ecr-login@v2
-        with: 
-               region: us-east-1
-        
+             
       - name: Build, tag, and push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
