@@ -35,4 +35,4 @@ jobs:
         
       - name: Push Image
         run: |
-          docker push service-a:${IMAGE_TAG}
+          docker push service-a:$IMAGE_TAG
