@@ -24,7 +24,7 @@ jobs:
         run: pip-audit -r app/service_a/requirements.txt || true
       - name: Login to ECR
         id: ecr
-      - uses: aws-actions/amazon-ecr-login@v2
+        uses: aws-actions/amazon-ecr-login@v2
         with: { amazon-ecr-region: your-aws-account-id.dkr.ecr.your-aws-region.amazonaws.com }
         
 env:
