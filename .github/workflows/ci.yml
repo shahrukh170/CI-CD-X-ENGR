@@ -39,8 +39,9 @@ jobs:
           ECR_REPOSITORY: reponame
           IMAGE_TAG: ${{ github.sha }}
         run: |
-             docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        
       - name: Log out of Amazon ECR
         if: always()
         run: docker logout ${{ steps.login-ecr.outputs.registry }}
