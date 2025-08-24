@@ -8,8 +8,8 @@ FROM base AS deps
 CMD MKDIR app/service-a
 WORKDIR app/
 #COPY app/service-a/ app/service-a/
-COPY ./pyproject.toml app/
-COPY ./requirements.txt app/ 
+COPY pyproject.toml app/
+COPY requirements.txt app/ 
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*
 RUN pip install --upgrade pip && pip install -U pip-tools
 CMD /usr/local/bin/pip install -r app/requirements.txt app/pyproject.toml
@@ -22,7 +22,7 @@ FROM base AS runtime
 COPY --from=deps /usr/local /usr/local
 USER root
 EXPOSE 8000
-COPY ./src/ app/
-COPY ./src/templates/* templates/
+COPY src/ app/
+COPY src/templates/* templates/
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD python -m src.healthcheck || exit 1
 CMD ["python", "app/main.py"]
