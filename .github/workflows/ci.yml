@@ -30,7 +30,7 @@ jobs:
           ECR_REPOSITORY: reponame
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t service-a:$IMAGE_TAG -f /apps/Dockerfile .
+          docker build -t service-a:$IMAGE_TAG -f apps/Dockerfile .
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
         
       - name: Push Image
